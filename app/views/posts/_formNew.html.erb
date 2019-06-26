@@ -1,0 +1,14 @@
+<%= form_for :post, url: user_posts_path do |form| %>
+
+  <div class="field">
+    <%= form.text_field :title, class: "form-control form-control-margin", placeholder: "Título" %>
+  </div>
+
+  <div class="field">
+    <%= form.text_area :content, class: "form-control form-control-margin", placeholder: "Conteúdo", rows: 8 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit(class: 'btn btn-success btn-margin') %>
+  </div>
+<% end %>

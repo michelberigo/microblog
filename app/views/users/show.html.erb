@@ -1,0 +1,23 @@
+<h3>
+	<% if @user.image.attached? %>
+		<%= image_tag(@user.image, class: "img-user") %>
+	<% else %>
+		<%= image_tag 'default-user.png', class: "img-user" %>
+	<% end %>
+	
+	<%= @user.username %>
+</h3>
+
+<%= render 'shared/status' %>
+
+<% if @user == current_user %>
+	<%= link_to '<button type="button" class="btn btn-primary btn-margin">Nova Postagem</button>'.html_safe, new_user_post_path(@user, @post) %>
+<% end %>
+
+<br>
+
+<%= render 'formFollow' if signed_in? %>
+
+<%= render @user.posts.select(&:persisted?).reverse %>
+
+<%= link_to '<button type="button" class="btn btn-secondary btn-margin">Voltar</button>'.html_safe, users_path %>

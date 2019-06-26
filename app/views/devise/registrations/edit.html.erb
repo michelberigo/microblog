@@ -1,0 +1,53 @@
+<h2>Editar Perfil</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-margin" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "form-control form-control-margin" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :imagem_de_perfil %>
+    <br>
+    <%= f.file_field :image, class: "btn btn-info form-control-margin" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :senha %> <i>(Deixe este campo em branco se não quiser mudar)</i><br />
+    <% if @minimum_password_length %>
+      <em><%= @minimum_password_length %> caracteres ou mais</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control form-control-margin" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :confirmação_de_senha %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-margin" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :senha_atual %> <i>(Digite sua senha atual para confirmar as mudanças)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control form-control-margin" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit("Atualizar", class: 'btn btn-success btn-margin') %>
+  </div>
+<% end %>
+
+<h3>Cancelar minha conta</h3>
+
+<%= button_to "Cancelar conta", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger btn-margin' %>
+
+<%= link_to "Voltar", :back, class: 'btn btn-secondary btn-margin' %>

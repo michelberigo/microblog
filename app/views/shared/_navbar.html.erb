@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark mb-4 fixed-top">
+  <%= link_to main_app.dashboard_path, class: "navbar-brand" do %>
+  	<%= icon('fas', 'home') %>
+  <% end %>
+
+  <ul class="navbar-nav mr-auto">
+  </ul>
+  
+  <% if user_signed_in? %>
+    <%= link_to pluralize(Notification.unread_count(current_user), 'Notificações'), notifications_path, class: "navbar-brand" %>
+  <% end %>
+
+  <%= form_tag(main_app.users_path, method: :get, class: "form-inline form-inline-margin mt-2 mt-md-0") do %>
+    <%= text_field_tag :term, params[:term], class: "form-control mr-sm-2", placeholder: "Pesquisar" %>
+    <%= button_tag :submit, name: nil, class: "btn btn-search" do %>
+    	<%= icon('fas', 'search') %>
+    <% end %>
+  <% end %>
+</nav>

@@ -1,0 +1,19 @@
+<div class="card post-color">
+	<%= link_to user_post_path(@user, post), class: "card-link" do %>
+		<h4 class="card-title border">
+    	<%= post.title %>
+  	</h4>
+
+  	<div class="card-content">
+  		<p>
+  			<%= post.content %>
+  		</p>
+      
+      <% if current_user && post.user_id == current_user.id %>
+  		  <%= link_to '<button type="button" class="btn btn-danger">Apagar</button>'.html_safe, [post.user, post], method: :delete, data: { confirm: 'Tem certeza?' } %>
+      <% end %>
+  	</div>
+	<% end %>
+</div>
+
+

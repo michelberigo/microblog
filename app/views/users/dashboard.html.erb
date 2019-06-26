@@ -1,0 +1,22 @@
+<%= link_to '<button type="button" class="btn btn-primary btn-margin">Nova Postagem</button>'.html_safe, new_user_post_path(@user, @post) %>
+
+<% current_user.following.each do |following| %>
+    <% following.posts.order(created_at: :desc).each do |post| %>
+    	<div class="card post-color">
+    		<%= link_to user_path(post.user_id), class: "card-link board" do %>
+                    <%= icon('fas', 'user-alt') %>
+	    			<%= post.user.username %> <div class="text-color">postou em</div> <%= post.created_at.strftime("%d/%m/%Y") %>
+			<% end %>
+
+    		<%= link_to user_post_path(post.user, post), class: "card-link" do %>
+    			<h3 class="card-title">
+    				<%= post.title %>
+    			</h3>
+
+    			<p class="card-content">
+    				<%= post.content %>
+    			</p>
+    		<% end %>
+    	</div>
+    <% end %>
+<% end %>

@@ -1,0 +1,18 @@
+<div class="follow-group">
+  <%= link_to following_user_path(@user) do %>
+    <strong>
+      <%= @user.following.count %>
+    </strong>
+    Seguindo
+  <% end %>
+</div>
+    
+<div class="follow-group">
+  <%= link_to followers_user_path(@user) do %>
+    <strong>
+      <%= @user.followers.count %>
+    </strong>
+    Seguidores
+  <% end %>
+</div>
+    

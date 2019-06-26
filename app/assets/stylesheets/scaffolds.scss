@@ -1,0 +1,169 @@
+/* NAVBAR */
+.nav-link {
+  font-size: x-large;
+  font-family: -apple-system;
+}
+/* NAVBAR */
+
+/* CONTENT */
+.content {
+  margin-top: 80px;
+}
+/* CONTENT */
+
+/* MAIN */
+.main {
+  float: right;
+  width: 80%;
+  text-align: center;
+}
+/* MAIN */
+
+/* SIDEBAR */
+.sidebar {
+  float: left;
+  width: 20%;
+}
+
+/* The navigation menu links */
+.sidebar a {
+    text-decoration: none;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidebar a:hover {
+    color: #E13737;
+}
+
+.sidebar-title {
+  background-color: #E13737;
+  margin-right: 10%;
+  margin-left: 10%;
+  padding-top: 2px;
+  padding-bottom: 0.2px;
+  margin-bottom: 15px;
+}
+
+.sidebar-content {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.sidebar-content > a {
+  font-size: larger;
+  font-family: Gill Sans, sans-serif;
+}
+
+.sidebar-group {
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 950px) {
+  .main {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+}
+/* SIDEBAR */
+
+/* BUTTONS */
+.btn-search {
+  background-color: white;
+}
+
+.btn-margin {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+/* BUTTONS */
+
+/* FORM */
+.form-inline-margin {
+  margin-right: 30px;
+}
+
+.form-control-margin {
+  margin-bottom: 30px;
+}
+/* FORM */
+
+/* CARD */
+.card {
+  margin-right: 25%;
+  margin-left: 25%;
+  margin-bottom: 20px;
+  border: none;
+}
+
+.card-title {
+  color: black;
+  font-size: larger;
+}
+
+.user-card {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a.card-link:link, a.card-link:visited, a.card-link:hover, a.card-link:active {
+    color: #000000;
+}
+/* CARD */
+
+/* MARGIN */
+.show-margin {
+  margin-left: 100px;
+}
+
+.notifications-margin {
+  margin-top: 30px;
+}
+/* MARGIN */
+
+/* COLOR */
+.text-color {
+  color: grey;
+  display: inline;
+}
+
+.comment-color {
+  background-color: #cccccc;
+}
+
+.post-color {
+  background-color: #f2f1f3;
+}
+/* TEXT POST COLOR */
+
+/* FOLLOW */
+.status {
+  margin-bottom: 30px;
+}
+
+.follow-group a {
+  color: #000;
+  text-decoration: none;
+}
+
+.follow-group a:hover {
+  color: #E13737;
+}
+/* FOLLOW */
+
+/* IMG */
+.img-user {
+  width: 70px;
+  border-radius: 50%;
+}
+/* IMG */

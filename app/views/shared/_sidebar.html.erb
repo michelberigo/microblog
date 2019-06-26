@@ -1,0 +1,44 @@
+<div class="sidebar">
+	<div class="sidebar-group">
+		<% if user_signed_in? %>
+
+			<%= link_to main_app.user_path(current_user) do %>
+				<h4>
+					<%= current_user.username %>
+				</h4>
+			<% end %>
+			
+			<div>
+				<%= link_to main_app.edit_user_registration_path do %>
+					<%= icon('fas', 'user-edit', "Editar perfil") %>
+				<% end %>
+			</div>
+			
+			<div>
+				<%= link_to main_app.destroy_user_session_path, method: :delete do %>
+					<%= icon('fas', 'sign-out-alt', "Sair") %>
+				<% end %>
+			</div>
+		<% else %>
+			<div>
+				<%= link_to main_app.new_user_registration_path do %>
+					<%= icon('fas', 'plus-square', "Registrar-se") %>
+				<% end %>
+			</div>
+
+			<div>
+				<%= link_to main_app.new_user_session_path do %>
+					<%= icon('fas', 'sign-in-alt', "Login") %>
+				<% end %>
+			</div>
+			
+			
+		<% end %>
+	</div>
+	
+	<div class="sidebar-group">
+		<%= link_to main_app.users_path do %>
+			<%= icon('fas', 'users', "Todos os usuários") %>
+		<% end %>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+	<%= @post.title %>
+</h1>
+<div class="show-margin">
+	<p class="text-left">
+	  <%= @post.content %>
+	</p>
+</div>
+
+<% if current_user && @post.user_id == current_user.id %>
+	<%= link_to '<button type="button" class="btn btn-primary btn-margin">Editar</button>'.html_safe, edit_user_post_path(@post) %>
+	<%= link_to '<button type="button" class="btn btn-danger btn-margin">Apagar</button>'.html_safe, [@post.user, @post], method: :delete, data: { confirm: 'Tem certeza?' } %>
+<% end %>
+
+<%= link_to '<button type="button" class="btn btn-secondary btn-margin">Voltar</button>'.html_safe, dashboard_path %>
+
+<% if user_signed_in? %>
+	<h3>Adicionar um comentário: </h3>
+
+	<%= render 'comments/form' %>
+<% end %>
+
+<h3>Comentários</h3>
+
+<%= render @post.comments.select(&:persisted?).reverse %>

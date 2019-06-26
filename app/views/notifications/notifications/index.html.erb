@@ -1,0 +1,22 @@
+<h3>
+  Todas as notificações
+</h3>
+
+<span class="pull-xs-right">
+  <%= link_to "Limpar tudo", notifications.clean_notifications_path, class: 'btn btn-sm btn-danger', method: 'delete' %>
+</span>
+
+<div class="notifications-margin">
+  <% if @notifications.blank? %>
+    <div class="no-records">
+      <p>Sem notificações</p>
+    </div>
+  <% else %>
+    <% @notification_groups.each do |group, notifications| %>
+      <div class="notification-group">
+        <%= render notifications %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<%= paginate @notifications %>
