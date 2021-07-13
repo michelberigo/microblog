@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><%= @post.title %></h5>
+                <h6 class="card-subtitle mb-2 text-muted">Criado por <%= link_to @post.user.email, user_path(@post.user), :class => 'link-normal text-decoration-none' %> em <%= @post.created_at.strftime('%d/%m/%y') %> às <%= @post.created_at.strftime('%H:%M:%S') %></h6>
+
+                <p class="card-text"><%= simple_format @post.content %></p>
+
+                <% if user_signed_in? && @post.user_id == current_user.id %>
+                    <%= link_to 'Editar Post', edit_post_path(@post), :class => 'btn btn-primary' %>
+                    <%= link_to 'Excluir Post', @post, method: :delete, data: { confirm: 'Você tem certeza?' }, :class => 'btn btn-danger' %>
+                <% end %>
+            </div>
+        </div>
+
+         <div id="comentarios">
+            <%= render 'comments/index' %>
+        </div>
+    </div>
+</div>

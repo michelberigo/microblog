@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="text-center mb-3">
+            <h2>
+                <%= @user.email %>
+
+                <% if user_signed_in? && @user.id != current_user.id %>
+                    <% if current_user.given_follows.where(user_id: @user.id).empty? %>
+                        <%= link_to 'Seguir', user_follow_path(@user), method: :post, :class => 'btn btn-success' %>
+                    <% else %>
+                        <%= link_to 'Deixar de Seguir', user_unfollow_path(@user), method: :delete, :class => 'btn btn-danger' %>
+                    <% end %>
+                <% end %>
+            </h2>
+
+            <p>
+                <% if user_signed_in? && @user.id == current_user.id %>
+                    <%= link_to 'Editar Perfil', edit_user_registration_path, :class => 'btn btn-secondary' %>
+                <% end %>
+            </p>
+
+            <p class="text-muted">
+                <b>Seguindo: <%= link_to @user.given_follows.count, user_followings_path(@user), :class => 'link-normal text-decoration-none' %></b> |
+                <b>Seguidores: <%= link_to @user.received_follows.count, user_followers_path(@user), :class => 'link-normal text-decoration-none' %></b>
+            </p>
+        </div>
+
+        <h1 class="text-center">Posts</h1>
+
+        <% @user.posts.reverse.each do |post| %>
+            <div class="card mb-3">
+                <div class="card-body">
+                <h5 class="card-title"><%= post.title %></h5>
+                <h6 class="card-subtitle mb-2 text-muted">Criado por <%= post.user.email %> em <%= post.created_at.strftime('%d/%m/%y') %> às <%= post.created_at.strftime('%H:%M:%S') %></h6>
+
+                <p class="card-text"><%= simple_format post.content %></p>
+
+                <%= link_to 'Ver Post', post_path(post), :class => 'btn btn-secondary' %>
+
+                <% if user_signed_in? && post.user_id == current_user.id %>
+                    <%= link_to 'Editar Post', edit_post_path(post), :class => 'btn btn-primary' %>
+                    <%= link_to 'Excluir Post', post, method: :delete, data: { confirm: 'Você tem certeza?' }, :class => 'btn btn-danger' %>
+                <% end %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

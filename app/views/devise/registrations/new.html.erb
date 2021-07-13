@@ -1,0 +1,33 @@
+<%= stylesheet_link_tag 'login', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+<div class="body-login">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-signin' }) do |f| %>
+    <h1 class="h3 mb-3 font-weight-normal text-center">Registrar</h1>
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <%= f.label :email, class: 'sr-only' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'Email' %>
+
+    <%= f.label :senha, class: 'sr-only' %>
+    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control form-signin-password', placeholder: 'Senha' %>
+
+    <%= f.label :confirmar_senha, class: 'sr-only' %>
+    <%= f.password_field :password_confirmation, autocomplete: "current-password", class: 'form-control form-signin-password-confirmation', placeholder: 'Confirmar Senha' %>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="checkbox my-3">
+        <%= f.check_box :remember_me %>
+        <%= f.label :lembrar %>
+      </div>
+    <% end %>
+
+    <div class="text-center">
+      <%= f.submit "Registrar", class: 'btn btn-lg btn-success btn-block' %>
+    </div>
+
+    <div class="text-center mt-4">
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</div>

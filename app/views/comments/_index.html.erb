@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+  <h3>Adicionar Comentário</h3>
+
+  <%= render 'comments/form', comment: Comment.new %>
+<% end %>
+
+<h3>Comentários</h3>
+
+<% @post.comments.reverse.each do |comment| %>
+  <div class="card mb-3">
+    <h5 class="card-header"><%= link_to comment.user.email, user_path(comment.user), :class => 'link-normal text-decoration-none link-secondary' %></h5>
+    <div class="card-body">
+      <%= simple_format comment.content %>
+
+      <% if user_signed_in? && @post.user_id == current_user.id %>
+        <%= link_to 'Excluir Comentário', post_comment_path(@post, comment), method: :delete, data: { confirm: 'Você tem certeza?' }, :class => 'btn btn-danger' %>
+      <% end %>
+    </div>
+  </div>
+        
+<% end %>

@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="text-center">Usuários</h1>
+
+    <% @users.reverse.each do |user| %>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title"><%= user.email %></h5>
+          <h6 class="card-subtitle mb-2 text-muted">Registrou-se em <%= user.created_at.strftime('%d/%m/%y') %> às <%= user.created_at.strftime('%H:%M:%S') %></h6>
+
+          <div class="row mb-2">
+            <div class="col-sm-2">
+              <p class="card-subtitle text-muted"><b>Seguindo: <%= link_to user.given_follows.count, user_followings_path(user), :class => 'link-normal text-decoration-none' %></b></p>
+            </div>
+
+            <div class="col-sm-2">
+              <p class="card-subtitle text-muted"><b>Seguidores: <%= link_to user.received_follows.count, user_followers_path(user), :class => 'link-normal text-decoration-none' %></b></p>
+            </div>
+          </div>
+
+          <%= link_to 'Ver Perfil', user_path(user), :class => 'btn btn-secondary' %>
+
+          <% if user_signed_in? && user.id != current_user.id %>
+            <% if current_user.given_follows.where(user_id: user.id).empty? %>
+              <%= link_to 'Seguir', user_follow_path(user), method: :post, :class => 'btn btn-success' %>
+            <% else %>
+              <%= link_to 'Deixar de Seguir', user_unfollow_path(user), method: :delete, :class => 'btn btn-danger' %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

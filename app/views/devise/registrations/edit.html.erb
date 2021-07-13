@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="text-center">
+      <h2>Editar Usuário</h2>
+
+      <h3><%= current_user.email %></h3>
+    </div>
+      
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="row">
+        <div class="col-sm-12">
+          <%= render "devise/shared/error_messages", resource: resource %>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-8 offset-sm-2 form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-sm-4 offset-sm-2 form-group">
+          <%= f.label :nova_senha %>
+          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+          <i>(Deixe em branco se não quiser alterar)</i>
+        </div>
+
+        <div class="col-sm-4 form-group">
+          <%= f.label :confirmar_nova_senha %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="col-sm-4 offset-sm-2 form-group">
+          <%= f.label :senha_atual %>
+          <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
+          <i>(Necessária para confirmar as mudanças)</i>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="row">
+        <div class="text-center">
+          <%= f.submit "Salvar", class: 'btn btn-success' %>
+        </div>
+      </div>
+    <% end %>
+
+    <hr>
+
+    <div class="text-center">
+      <h3>Cancelar Minha Conta</h3>
+
+      <br>
+
+      <%= button_to "Cancelar", registration_path(resource_name), data: { confirm: "Você tem certeza? O cancelamento é irreversível!" }, method: :delete, class: 'btn btn-danger' %>
+    </div>
+  </div>
+</div>
